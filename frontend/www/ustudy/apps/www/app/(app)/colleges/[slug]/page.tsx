@@ -427,22 +427,38 @@ const Collages: any = ({ params }: { params: { slug: string } }) => {
                     <span className="w-auto select-all text-start font-semibold">{docs.email || "No Email is Provided."}</span>
                   </div>
                   <Separator />
-                  <div className="flex items-center justify-start gap-2">
-                    <div className="bg-primary-foreground flex size-[45px] items-center justify-center rounded-full p-1 pb-2">
-                      <Facebook className="size-5 !p-0" />
+                  <Link href={docs.facebook}>
+                    <div className="flex items-center justify-start gap-2">
+                      <div className="bg-primary-foreground flex size-[45px] items-center justify-center rounded-full p-1 pb-2">
+                        <Facebook className="size-5 !p-0" />
+                      </div>
+                      <p>Facebook: </p>
+                      <span className="w-auto select-all text-start font-semibold">{docs.facebook || "No Facebook Link is Provided."}</span>
+                      {/* <Facebook className="size-5 !self-end" /> */}
+
                     </div>
-                    <p>Facebook: </p>
-                    <span className="w-auto select-all text-start font-semibold">{docs.facebook || "No Facebook Link is Provided."}</span>
-                  </div>
+                  </Link>
+
+
                   <Separator />
+
+                  <Link href={docs.instagram}>
+
                   <div className="flex items-center justify-start gap-2">
                     <div className="bg-primary-foreground flex size-[45px] items-center justify-center rounded-full p-1 pb-2">
                       <Instagram className="size-5 !p-0" />
                     </div>
                     <p>Instagram: </p>
-                    <span className="w-auto select-all text-start font-semibold">{docs.instragam || "No Instagram Link is Provided."}</span>
+                    <span className="w-auto select-all text-start font-semibold">{docs.instagram || "No Instagram Link is Provided."}</span>
                   </div>
+                  </Link>
+
+
+
                   <Separator />
+
+                  <Link href={docs.website}>
+
                   <div className="flex items-center justify-start gap-2">
                     <div className="bg-primary-foreground flex size-[45px] items-center justify-center rounded-full p-1 pb-2">
                       <Chrome className="size-5 !p-0" />
@@ -450,6 +466,8 @@ const Collages: any = ({ params }: { params: { slug: string } }) => {
                     <p>Website: </p>
                     <span className="w-auto select-all text-start font-semibold">{docs.website || "No Website Link is Provided."}</span>
                   </div>
+                  </Link>
+
                   <Separator />
                   <div className="flex items-center justify-start gap-2">
                     <div className="bg-primary-foreground flex size-[45px] items-center justify-center rounded-full p-1 pb-2">

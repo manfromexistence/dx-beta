@@ -269,7 +269,7 @@ const UniversityPage = () => {
   const [inputedEmail, setInputedEmail] = React.useState("")
   const [inputedStatus, setInputedStatus] = React.useState("")
   const [inputedFacebook, setInputedFacebook] = React.useState("")
-  const [inputedInstragam, setInputedInstragam] = React.useState("")
+  const [inputedInstagam, setInputedInstagam] = React.useState("")
   const [inputedCost, setInputedCost] = React.useState("")
   const [inputedWebsite, setInputedWebsite] = React.useState("")
   const [inputedCode, setInputedCode] = React.useState("")
@@ -305,7 +305,7 @@ const UniversityPage = () => {
   }
 
   const handleInstagramChange = (event: any) => {
-    setInputedInstragam(event.target.value);
+    setInputedInstagam(event.target.value);
   }
   const handleCostChange = (event: any) => {
     setInputedCost(event.target.value);
@@ -376,7 +376,7 @@ const UniversityPage = () => {
         setInputedHostel(item.hostel);
         setInputedImages(item.images);
         setInputedImage(item.image);
-        setInputedInstragam(item.instagram);
+        setInputedInstagam(item.instagram);
         setInputedMilitary(item.military);
         setInputedPhoneNumber(item.phoneNumber);
         setInputedRegion(item.region);
@@ -733,7 +733,7 @@ const UniversityPage = () => {
                               <Instagram className="h-5 w-5 !p-0" />
                             </div>
                             <p>Instagram: </p>
-                            <span className="w-auto select-all text-start font-semibold">{items.instragam || "No Instagram Link is Provided."}</span>
+                            <span className="w-auto select-all text-start font-semibold">{items.instagram || "No Instagram Link is Provided."}</span>
                           </div>
                           <Separator />
                           <div className="flex items-center justify-start gap-2">
@@ -783,13 +783,6 @@ const UniversityPage = () => {
                             <p>Phone Number: </p>
                             <span className="w-auto select-all text-start font-semibold">{items.phoneNumber || "No Phone Number is Provided."}</span>
                           </div>
-                          {/* <Separator />
-                          <div className="flex items-center justify-start gap-2">
-                            <div className="bg-primary-foreground flex h-[45px] w-[45px] items-center justify-center rounded-full p-1 pb-2">
-                  <University className="h-5 w-5 !p-0" />
-                </div>                <p>Logo: </p>
-                            <span className="w-auto text-start font-semibold select-all">{items.logo || "No Logo is Provided."}</span>
-                          </div> */}
                           <Separator />
                           <div className="flex items-center justify-start gap-2">
                             <div className="bg-primary-foreground flex h-[45px] w-[45px] items-center justify-center rounded-full p-1 pb-2">
@@ -915,7 +908,7 @@ const UniversityPage = () => {
                                     facebook: inputedFacebook || items.facebook,
                                     hostel: inputedHostel || items.hostel,
                                     image: inputedImage || items.image,
-                                    instagram: inputedInstragam || items.instagram,
+                                    instagram: inputedInstagam || items.instagram,
                                     military: inputedMilitary || items.military,
                                     phoneNumber: phone || items.phoneNumber,
                                     region: countryValue || items.region,
@@ -935,7 +928,7 @@ const UniversityPage = () => {
                                   //   hostel: inputedHostel || items.hostel,
                                   //   image: inputedImage || items.image,
                                   //   images: inputedImages || items.images,
-                                  //   instagram: inputedInstragam || items.instagram,
+                                  //   instagram: inputedInstagam || items.instagram,
                                   //   military: inputedMilitary || items.military,
                                   //   phoneNumber: inputedPhoneNumber || items.phoneNumber,
                                   //   region: countryValue || items.region,
@@ -953,7 +946,7 @@ const UniversityPage = () => {
                                   //   hostel: inputedHostel || items.hostel,
                                   //   image: inputedImage || items.image,
                                   //   images: inputedImages || items.images,
-                                  //   instagram: inputedInstragam || items.instagram,
+                                  //   instagram: inputedInstagam || items.instagram,
                                   //   military: inputedMilitary || items.military,
                                   //   phoneNumber: inputedPhoneNumber || items.phoneNumber,
                                   //   region: countryValue || items.region,
@@ -1004,7 +997,7 @@ const UniversityPage = () => {
                             <Separator />
                             <div className="flex gap-2">
                               <p>Instagram: </p>
-                              <span className="font-semibold w-auto text-start">{inputedInstragam || "No Instagram Link is Provided."}</span>
+                              <span className="font-semibold w-auto text-start">{inputedInstagam || "No Instagram Link is Provided."}</span>
                             </div>
                             <Separator />
                             <div className="flex gap-2">
@@ -1569,7 +1562,7 @@ const UniversityPage = () => {
                                   facebook: inputedFacebook || items.facebook,
                                   hostel: inputedHostel || items.hostel,
                                   image: inputedImage || items.image,
-                                  instagram: inputedInstragam || items.instagram,
+                                  instagram: inputedInstagam || items.instagram,
                                   military: inputedMilitary || items.military,
                                   phoneNumber: phone || items.phoneNumber,
                                   region: countryValue || items.region,
@@ -1589,7 +1582,7 @@ const UniversityPage = () => {
                                 //   hostel: inputedHostel || items.hostel,
                                 //   image: inputedImage || items.image,
                                 //   images: inputedImages || items.images,
-                                //   instagram: inputedInstragam || items.instagram,
+                                //   instagram: inputedInstagam || items.instagram,
                                 //   military: inputedMilitary || items.military,
                                 //   phoneNumber: inputedPhoneNumber || items.phoneNumber,
                                 //   region: countryValue || items.region,
@@ -1607,7 +1600,7 @@ const UniversityPage = () => {
                                 //   hostel: inputedHostel || items.hostel,
                                 //   image: inputedImage || items.image,
                                 //   images: inputedImages || items.images,
-                                //   instagram: inputedInstragam || items.instagram,
+                                //   instagram: inputedInstagam || items.instagram,
                                 //   military: inputedMilitary || items.military,
                                 //   phoneNumber: inputedPhoneNumber || items.phoneNumber,
                                 //   region: countryValue || items.region,
