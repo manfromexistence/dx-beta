@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-unnecessary-arbitrary-value */
 "use client"
 
 /* eslint-disable tailwindcss/migration-from-tailwind-2 */
@@ -112,19 +113,6 @@ type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
 type CarouselOptions = UseCarouselParameters[0]
 type CarouselPlugin = UseCarouselParameters[1]
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAj8jpnqU9Xo1YXVFJh-wCdulweO5z--H8",
-//   authDomain: "ustudy-96678.firebaseapp.com",
-//   projectId: "ustudy-96678",
-//   storageBucket: "ustudy-96678.appspot.com",
-//   messagingSenderId: "581632635532",
-//   appId: "1:581632635532:web:51ccda7d7adce6689a81a9",
-// }
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig)
-// // Database
-// const db: any = getFirestore(app)
-
 function uuid() {
   return crypto.getRandomValues(new Uint32Array(1))[0].toString()
 }
@@ -733,7 +721,9 @@ let questions: QuestionsArray = [
 
 // console.log(FormSchema);
 type QuizFormFields = {
-  [key: string]: "a" | "b";
+  mainQuestion: string;
+  answers: string[];
+  results: string[];
 };
 
 // let FormSchema = z.object({});
@@ -749,10 +739,30 @@ type QuizFormFields = {
 // console.log(FormSchema);
 
 /**
- * v0 by Vercel.
- * @see https://v0.dev/t/20K9R12fsjL
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
+{
+  mainQuestion: "The Main Question",
+  answers: [
+    "ansewer1",
+    "ansewer2",
+    "ansewer3",
+  ]
+  resultss: [
+    "results1",
+    "results2",
+    "results3",
+  ]
+}
+
+
  */
+
+
+
+
+
+
+
+
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 
 function QuizResult() {
@@ -804,29 +814,31 @@ function JapaneseYenIcon(props: React.JSX.IntrinsicAttributes & React.SVGProps<S
 
 
 export default function RadioGroupForm() {
-  // const form = useForm<z.infer<typeof FormSchema>>({
-  //   resolver: zodResolver(FormSchema),
-  // })
+
   const [docs, setDocs] = React.useState<any>([])
+  const [data, setData] = React.useState<any>([])
 
   let FormSchema = z.object({});
 
+
   for (let i = 0; i < docs?.length; i++) {
     FormSchema = FormSchema.extend({
-      [`quiz${i + 1}`]: z.any(),
+      [`${i + 1}`]: z.string(),
     });
   }
-  const form = useForm<QuizFormFields>({
+
+  const form = useForm<any>({
     resolver: zodResolver(FormSchema),
   });
   function onSubmit(data: z.infer<typeof FormSchema>) {
     // e.preventDefault();
+    setData(data);
     toast({
       title: "Thank you, for taking quiz.",
       description: (
         <pre className="mt-2 max-h-[500px] w-[340px] overflow-y-auto overflow-x-hidden rounded-md bg-slate-950 p-4">
-          {/* <code className="text-white">{JSON.stringify(data, null, 2)}</code> */}
-          The Reults will appear shortly.
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          {/* The Reults will appear shortly. */}
         </pre>
       ),
     })
@@ -834,22 +846,11 @@ export default function RadioGroupForm() {
 
   }
 
-
   const [api, setApi] = React.useState<CarouselApi>()
   const [current, setCurrent] = React.useState<any>(0)
   const [count, setCount] = React.useState<any>(0)
   const { toast } = useToast()
-  const router = useRouter()
-  const [userDetailsDialog, setUserDetailsDialog] = useState(false);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userId, setUserid] = useState<any>("");
-  const [surname, setSurname] = useState("");
-  const [untScore, setUntScore] = useState<any>(0);
-  const [region, setRegion] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+
 
 
   React.useEffect(() => {
@@ -879,150 +880,7 @@ export default function RadioGroupForm() {
     api?.scrollNext()
   }, [api])
 
-  const EnhancedErrors = (input: any): string | null => {
-    switch (input) {
-      case "auth/email-already-in-use": return "Email in use.";
-      case "auth/invalid-email": return "Invalid email.";
-      case "auth/operation-not-allowed": return "Operation not allowed.";
-      case "auth/weak-password": return "Weak password.";
-      case "auth/user-disabled": return "User disabled.";
-      case "auth/user-not-found": return "User not found.";
-      case "auth/wrong-password": return "Wrong password.";
-      case "auth/too-many-requests": return "Too many requests.";
-      case "auth/network-request-failed": return "Network error.";
-      default: return "Signup error.";
-    }
-  };
 
-  const SuggestSolutions = (input: any): string | null => {
-    switch (input) {
-      case "auth/email-already-in-use": return "Try logging in or use a different email.";
-      case "auth/invalid-email": return "Check format.";
-      case "auth/operation-not-allowed": return "Contact support.";
-      case "auth/weak-password": return "Choose a stronger one.";
-      case "auth/user-disabled": return "Contact support.";
-      case "auth/user-not-found": return "Check email or create new account.";
-      case "auth/wrong-password": return "Try again.";
-      case "auth/too-many-requests": return "Wait and try again.";
-      case "auth/network-request-failed": return "Check internet connection.";
-      default: return "Try again later or contact support.";
-    }
-  };
-  const handleSignUp = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    confirmPassword === password ?
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed up 
-          const user = userCredential.user;
-          setUserid(user)
-          console.log("Signup");
-          setUserDetailsDialog(true)
-
-        })
-        .catch((error) => {
-          setUserDetailsDialog(false)
-
-          setUserid("Error");
-          console.log("Error");
-
-          toast({
-            title: "Uh oh! Something went wrong with your SignUp.",
-            description: (<div className='bg-primary-foreground mt-1 flex flex-col items-start justify-start space-y-1.5 rounded-md p-3 text-xs'>
-              <span className="text-muted-foreground">{`Error: ${EnhancedErrors(error.code)}`}</span>
-              <span className="text-muted-foreground">{`Possible Solution: ${SuggestSolutions(error.code)}`}</span>
-            </div>),
-          })
-        }) : toast({
-          title: "Password and Confirm Password donot match!",
-          description: `Please match them Password${password} & Confirm Passwrod:${confirmPassword}`,
-        })
-
-  };
-  const userDetails = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    const Create = await addDoc(collection(db, "users"), {
-      accountType: "Client",
-      email: email,
-      name: name,
-      userName: userName,
-      region: region,
-      surname: surname,
-      untScore: untScore,
-      userId: userId.uid
-    });
-
-    console.log("Document written with ID: ", Create.id);
-
-    toast({
-      title: "User signed up successfully!",
-      description: `Continue Using Ustudy ${userId.uid}`,
-    })
-    setUserDetailsDialog(false);
-    router.push('/login')
-
-  };
-
-
-
-  const handleSignIn = async (e: any) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        toast({
-          title: "User signed in successfully!",
-          description: `Continue Using Ustudy ${user.uid}`,
-        })
-      })
-      .catch((error) => {
-        toast({
-          title: "Uh oh! Something went wrong with your SignIn.",
-          description: (<div className='bg-primary-foreground mt-1 flex flex-col items-start justify-start space-y-1.5 rounded-md p-3 text-xs'>
-            <span className="text-muted-foreground">{`Error: ${EnhancedErrors(error.code)}`}</span>
-            <span className="text-muted-foreground">{`Possible Solution: ${SuggestSolutions(error.code)}`}</span>
-          </div>),
-        })
-      });
-    router.push('/calculator')
-
-  };
-
-
-  const handleEmailDetail = async (e: any) => {
-    e.preventDefault();
-
-    scrollNext();
-
-    // sendPasswordResetEmail(auth, email)
-    //   .then(() => {
-    //     toast({
-    //       title: "We have sent you a Email!",
-    //       description: `Continue Using Ustudy ${email}`,
-    //     })
-    //     scrollNext();
-    //   })
-    //   .catch((error) => {
-    //     toast({
-    //       title: "Uh oh! Something went wrong with your SignIn.",
-    //       description: (<div className='flex items-start justify-start bg-primary-foreground rounded-md text-xs flex-col space-y-1.5 p-3 mt-1'>
-    //         <span className="text-muted-foreground">{`Error: ${EnhancedErrors(error.code)}`}</span>
-    //         <span className="text-muted-foreground">{`Possible Solution: ${SuggestSolutions(error.code)}`}</span>
-    //       </div>),
-    //     })
-    //     // ..
-    //   });
-    // router.push('/forgot-password-step-one')
-
-  };
-  const [isVisiblePassword, setIsVisiblePassword] = React.useState(true)
-  const [isVisibleConfirmPassword, setIsVisibleConfirmPassword] =
-    React.useState(true)
-  const togglePasswordVisibility = () =>
-    setIsVisiblePassword(!isVisiblePassword)
-  const toggleConfirmPasswordVisibility = () =>
-    setIsVisibleConfirmPassword(!isVisibleConfirmPassword)
 
   useEffect(() => {
     const fetchDocs = async () => {
@@ -1057,7 +915,7 @@ export default function RadioGroupForm() {
                   <FormField
                     key={index}
                     control={form.control}
-                    name={`quiz${index + 1}`}
+                    name={`${index + 1}`}
                     render={({ field }) => (
                       <FormItem className="hover:bg-primary-foreground relative flex size-full min-h-[165px] flex-col space-y-3 rounded-md border p-5">
                         <div className="flex flex-row items-center justify-start space-x-1.5 !p-0 text-[1rem] font-bold">
@@ -1161,7 +1019,46 @@ export default function RadioGroupForm() {
             </CardHeader>
             <CardContent className="p-4">
 
-              {docs && docs.map((item: any) => item.results.map((result: any) => <div className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white" key={result}>{result}</div>))}
+              {/* {docs && docs.map((item: any) => item.results.map((result: any) => <div className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white" key={result}>{result}</div>))} */}
+              {/* {docs && docs.map((item: any) => item.results.map((result: any) => <div className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white" key={result}>{result}</div>))} */}
+              {/* {
+                docs && docs.map((item: any) =>
+                  item.answers.map((answer: any, index: number) => {
+                    for (let key in data) {
+                      if (data[key] === answer) {
+                        let result = item.results[index];
+                        return (
+                          <div className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white" key={result}>
+                            {result}
+                          </div>
+                        );
+                      }
+                    }
+                  })
+                )
+              } */}
+              {
+                docs && docs.map((item: any) =>
+                  item.answers.map((answer: any, index: number) => {
+                    // Check if data is available and if the answer exists in the data
+                    if (data && Object.values(data).includes(answer)) {
+                      let result = item.results[index];
+                      // Check if the result exists
+                      if (result) {
+                        return (
+                          <div className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white" key={result}>
+                            {result}
+                          </div>
+                        );
+                      }
+                    }
+                    // If data is not available or the answer does not exist in the data, or if the result does not exist, return null
+                    return null;
+                  })
+                )
+              }
+
+
 
               <p>Close types: intellectual and office.</p>
               <p>The opposite type is social.</p>
@@ -1178,7 +1075,22 @@ export default function RadioGroupForm() {
           </Card>
         </CarouselItem>
 
-        {/* <CarouselItem>
+        {/*
+ in react typescript there is two arrays.
+ First array = docs=[
+  {
+    mainQuestion:"The mainQuestion",
+    answers:["answer1,"answer2"]
+    results:["result1,"result2"]
+  }
+  ...]
+  Second Array => data=[
+    "1": "anwers1"
+    "2": "anwers2"
+  ]
+  Now map through docs array and check what answers matches with index with docs and data array and return the content of the matched answers index of resutl index
+
+        <CarouselItem>
           <div className="mx-auto grid w-4/5 min-w-[300px] max-w-[550px] gap-5">
             <div className="grid min-w-full gap-2 text-left">
               <h1 className="text-37xl font-bold">Recover password</h1>
