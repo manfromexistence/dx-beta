@@ -504,209 +504,209 @@ type Question = {
 type QuestionsArray = Question[];
 
 
-let questions: QuestionsArray = [
-  {
-    "quiz1": "In a social gathering, do you feel more energized by interacting with a large group of people or by\r\n having one-on-one conversations?",
-    a: "Large group interactions",
-    b: "One-on-one conversations",
-  }, {
-    "quiz2": "How do you typically recharge after a busy day?",
-    a: "Spending time with friends or engaging in social activities",
-    b: "Having some alone time to relax and unwind",
-  }, {
-    "quiz3": "When facing a challenge, do you prefer brainstorming ideas with others or working through it\r\n independently?",
-    a: "Brainstorming with others",
-    b: "Working through it independently",
-  }, {
-    "quiz4": "In your free time, do you find yourself seeking out social events and gatherings or enjoying quieter\r\n activities at home?",
-    a: "Social events and gatherings",
-    b: "Quieter activities at home",
-  }, {
-    "quiz5": "How do you feel about small talk?",
-    a: "Enjoy it and find it easy to engage in",
-    b: "Find it somewhat awkward or draining",
-  }, {
-    "quiz6": "When making decisions, do you rely more on your own instincts and feelings or seek input from\r\n others?",
-    a: "Rely on own instincts and feelings",
-    b: "Seek input from others",
-  }, {
-    "quiz7": "How do you handle new and unfamiliar situations?",
-    a: "Embrace them with enthusiasm",
-    b: "Approach them with caution",
-  }, {
-    "quiz8": "In a work or team setting, do you prefer open office spaces and collaboration or individual\r\n workspaces?",
-    a: "Open office spaces and collaboration",
-    b: "Individual workspaces",
-  }, {
-    "quiz9": "How do you typically respond to being the focal point in a group setting?",
-    a: "Embrace it and feel at ease",
-    b: "Prefer to avoid being the center of attention",
-  }, {
-    "quiz10": "When planning a weekend, do you lean towards social plans with friends or quiet time for\r\n yourself?",
-    a: "Social plans with friends",
-    b: "Quiet time for yourself",
-  }, {
-    "quiz11": "When meeting new people, are you more likely to initiate conversations and introductions or wait for\r\n others to approach you?",
-    a: "Initiate conversations and introductions",
-    b: "Wait for others to approach you",
-  }, {
-    "quiz12": "When faced with a problem, do you prefer to rely on concrete facts and details or explore\r\n possibilities and potential meanings?",
-    a: "Rely on concrete facts and details",
-    b: "Explore possibilities and potential meanings",
-  }, {
-    "quiz13": "How do you approach new information or learning?",
-    a: "Prefer practical, hands-on experiences",
-    b: "Enjoy exploring theories and concepts",
-  }, {
-    "quiz14": "In a conversation, are you more focused on the present and current details or on future possibilities\r\n and patterns?",
-    a: "Present and current details",
-    b: "Future possibilities and patterns",
-  }, {
-    "quiz15": "When planning a trip, do you prefer to have a detailed itinerary and clear schedule or leave room for\r\n spontaneous experiences and changes?",
-    a: "Detailed itinerary and clear schedule",
-    b: "Leave room for spontaneous experiences and changes",
-  }, {
-    "quiz16": "How do you make decisions?",
-    a: "Based on practical considerations and real-world implications",
-    b: "Consider potential outcomes and future possibilities",
-  }, {
-    "quiz17": "When working on a project, do you tend to focus on the specific tasks at hand or the overall vision\r\n and goals?",
-    a: "Specific tasks at hand",
-    b: "Overall vision and goals",
-  }, {
-    "quiz18": "In a group discussion, do you prefer to stick to the facts and details or contribute ideas and\r\n theories?",
-    a: "Stick to facts and details",
-    b: "Contribute ideas and theories",
-  }, {
-    "quiz19": "How do you handle unexpected changes or disruptions to your plans?",
-    a: "Prefer stability and may find changes challenging",
-    b: "Adapt well to changes and enjoy the flexibility",
-  }, {
-    "quiz20": "When recalling a past event, do you focus more on the specific details and occurrences or the overall\r\n impressions and meanings?",
-    a: "Specific details and occurrences",
-    b: "Overall impressions and meanings",
-  }, {
-    "quiz21": "When reading a book or watching a movie, do you pay close attention to the plot and events or look\r\n for deeper meanings and symbolism?",
-    a: "Plot and events",
-    b: "Deeper meanings and symbolism",
-  }, {
-    "quiz22": "How do you prefer to receive information?",
-    a: "Clear and straightforward explanations",
-    b: "Rich with possibilities and potential connections",
-  }, {
-    "quiz23": "When faced with a decision, do you rely more on your past experiences and proven methods or seek out\r\n innovative and creative solutions?",
-    a: "Past experiences and proven methods",
-    b: "Innovative and creative solutions",
-  }, {
-    "quiz24": "In a brainstorming session, do you tend to come up with practical, actionable ideas or imaginative,\r\n out-of-the-box concepts?",
-    a: "Practical, actionable ideas",
-    b: "Imaginative, out-of-the-box concepts",
-  }, {
-    "quiz25": "How do you approach problem-solving?",
-    a: "Step-by-step and methodical approach",
-    b: "Approaching with creativity and openness",
-  }, {
-    "quiz26": "When making decisions, do you prioritize logical analysis and objective criteria or consider the\r\n impact on people and relationships?",
-    a: "Logical analysis and objective criteria",
-    b: "Consider the impact on people and relationships",
-  }, {
-    "quiz27": "How do you handle criticism or feedback?",
-    a: "Focus on the facts and seek constructive solutions",
-    b: "Consider the emotional aspects and how it affects relationships",
-  }, {
-    "quiz28": "When faced with a problem, do you rely more on your head and reason or your heart and\r\n empathy?",
-    a: "Head and reason",
-    b: "Heart and empathy",
-  }, {
-    "quiz29": "How do you prioritize tasks and responsibilities?",
-    a: "Based on logical importance and efficiency",
-    b: "Considering the values and impact on people",
-  }, {
-    "quiz30": "In a group decision-making process, do you tend to advocate for the most logical and rational choice\r\n or the one that aligns with personal values and harmony?",
-    a: "Logical and rational choice",
-    b: "Aligns with personal values and harmony",
-  }, {
-    "quiz31": "When giving feedback, do you focus on providing objective analysis or consider the individual's\r\n feelings and emotional response?",
-    a: "Objective analysis",
-    b: "Consider the individual's feelings and emotional response",
-  }, {
-    "quiz32": "How do you express your opinions in a debate or discussion?",
-    a: "Emphasize facts, evidence, and logical reasoning",
-    b: "Consider personal values, emotions, and the impact on people",
-  }, {
-    "quiz33": "When solving a problem, do you prioritize efficiency and effectiveness, even if it means being blunt,\r\n or do you consider the feelings of those involved?",
-    a: "Prioritize efficiency and effectiveness",
-    b: "Consider the feelings of those involved",
-  }, {
-    "quiz34": "In a work environment, do you value objective performance metrics and results or prioritize a\r\n positive and supportive team culture?",
-    a: "Objective performance metrics and results",
-    b: "Positive and supportive team culture",
-  }, {
-    "quiz35": "How do you approach conflict resolution?",
-    a: "Focus on finding logical solutions and compromises",
-    b: "Consider the emotional needs and harmony of individuals involved",
-  }, {
-    "quiz36": "When planning an event or project, do you prioritize the logical steps and timeline or consider the\r\n emotional atmosphere and team dynamics?",
-    a: "Logical steps and timeline",
-    b: "Emotional atmosphere and team dynamics",
-  }, {
-    "quiz37": "How do you cope with stress or pressure?",
-    a: "Analyze the situation logically and strategize a plan",
-    b: "Seek emotional support and consider the impact on relationships",
-  }, {
-    "quiz38": "When making decisions, what holds more weight for you?",
-    a: "Objective data and analysis",
-    b: "Personal values and the impact on people",
-  }, {
-    "quiz39": "When providing feedback, do you prioritize offering constructive criticism and improvement\r\n suggestions or highlighting positive aspects and encouraging the individual?",
-    a: "Constructive criticism and improvement suggestions",
-    b: "Highlighting positive aspects and encouraging the individual",
-  }, {
-    "quiz40": "How do you feel about making plans and sticking to a schedule?",
-    a: "Enjoy making plans and prefer a structured schedule",
-    b: "Prefer flexibility and spontaneity, dislike strict schedules",
-  }, {
-    "quiz41": "When starting a project, do you prefer to have a detailed plan in place or do you like to explore\r\n possibilities and figure it out as you go?",
-    a: "Prefer to have a detailed plan",
-    b: "Like to explore possibilities and figure it out as you go",
-  }, {
-    "quiz42": "How do you approach deadlines?",
-    a: "Work diligently to meet deadlines well in advance",
-    b: "Tend to work better under pressure and close to the deadline",
-  }, {
-    "quiz43": "In a work setting, do you prefer a clear and organized workspace or are you comfortable with a more\r\n flexible and adaptable environment?",
-    a: "Prefer a clear and organized workspace",
-    b: "Comfortable with a more flexible and adaptable environment",
-  }, {
-    "quiz44": "When packing for a trip, do you plan and make a checklist in advance or pack on the fly, throwing in\r\n what feels right at the moment?",
-    a: "Plan and make a checklist in advance",
-    b: "Pack on the fly, throwing in what feels right",
-  }, {
-    "quiz45": "What do you do when your plans suddenly change?",
-    a: "Dislike unexpected changes and prefer to stick to the original plan",
-    b: "Adapt well to unexpected changes and enjoy the flexibility",
-  }, {
-    "quiz46": "When faced with a new opportunity, do you prefer to consider the advantages and disadvantages prior\r\n to making a decision or go with the flow and see where it takes you ?",
-    a: "Consider the advantages and disadvantages prior to deciding",
-    b: "Go with the flow and see where it takes you",
-  }, {
-    "quiz47": "How do you approach work tasks?",
-    a: "Like to have a set plan and follow it step by step",
-    b: "Enjoy being flexible and adapting as the situation evolves",
-  }, {
-    "quiz48": "When organizing your day, do you prefer to have a to-do list with specific tasks and deadlines or\r\n keep it open-ended and see where the day takes you?",
-    a: "To-do list with specific tasks and deadlines",
-    b: "Keep it open-ended and see where the day takes you",
-  }, {
-    "quiz49": "How do you feel about routine and predictability?",
-    a: "Prefer routine and find comfort in predictability",
-    b: "Dislike routine and enjoy spontaneity",
-  }, {
-    "quiz50": "In a decision-making process, do you like to reach a conclusion and move on or prefer to keep options\r\n open and gather more information?",
-    a: "Like to reach a conclusion and move on",
-    b: "Prefer to keep options open and gather more information",
-  }
-]
+// let questions: QuestionsArray = [
+//   {
+//     "quiz1": "In a social gathering, do you feel more energized by interacting with a large group of people or by\r\n having one-on-one conversations?",
+//     a: "Large group interactions",
+//     b: "One-on-one conversations",
+//   }, {
+//     "quiz2": "How do you typically recharge after a busy day?",
+//     a: "Spending time with friends or engaging in social activities",
+//     b: "Having some alone time to relax and unwind",
+//   }, {
+//     "quiz3": "When facing a challenge, do you prefer brainstorming ideas with others or working through it\r\n independently?",
+//     a: "Brainstorming with others",
+//     b: "Working through it independently",
+//   }, {
+//     "quiz4": "In your free time, do you find yourself seeking out social events and gatherings or enjoying quieter\r\n activities at home?",
+//     a: "Social events and gatherings",
+//     b: "Quieter activities at home",
+//   }, {
+//     "quiz5": "How do you feel about small talk?",
+//     a: "Enjoy it and find it easy to engage in",
+//     b: "Find it somewhat awkward or draining",
+//   }, {
+//     "quiz6": "When making decisions, do you rely more on your own instincts and feelings or seek input from\r\n others?",
+//     a: "Rely on own instincts and feelings",
+//     b: "Seek input from others",
+//   }, {
+//     "quiz7": "How do you handle new and unfamiliar situations?",
+//     a: "Embrace them with enthusiasm",
+//     b: "Approach them with caution",
+//   }, {
+//     "quiz8": "In a work or team setting, do you prefer open office spaces and collaboration or individual\r\n workspaces?",
+//     a: "Open office spaces and collaboration",
+//     b: "Individual workspaces",
+//   }, {
+//     "quiz9": "How do you typically respond to being the focal point in a group setting?",
+//     a: "Embrace it and feel at ease",
+//     b: "Prefer to avoid being the center of attention",
+//   }, {
+//     "quiz10": "When planning a weekend, do you lean towards social plans with friends or quiet time for\r\n yourself?",
+//     a: "Social plans with friends",
+//     b: "Quiet time for yourself",
+//   }, {
+//     "quiz11": "When meeting new people, are you more likely to initiate conversations and introductions or wait for\r\n others to approach you?",
+//     a: "Initiate conversations and introductions",
+//     b: "Wait for others to approach you",
+//   }, {
+//     "quiz12": "When faced with a problem, do you prefer to rely on concrete facts and details or explore\r\n possibilities and potential meanings?",
+//     a: "Rely on concrete facts and details",
+//     b: "Explore possibilities and potential meanings",
+//   }, {
+//     "quiz13": "How do you approach new information or learning?",
+//     a: "Prefer practical, hands-on experiences",
+//     b: "Enjoy exploring theories and concepts",
+//   }, {
+//     "quiz14": "In a conversation, are you more focused on the present and current details or on future possibilities\r\n and patterns?",
+//     a: "Present and current details",
+//     b: "Future possibilities and patterns",
+//   }, {
+//     "quiz15": "When planning a trip, do you prefer to have a detailed itinerary and clear schedule or leave room for\r\n spontaneous experiences and changes?",
+//     a: "Detailed itinerary and clear schedule",
+//     b: "Leave room for spontaneous experiences and changes",
+//   }, {
+//     "quiz16": "How do you make decisions?",
+//     a: "Based on practical considerations and real-world implications",
+//     b: "Consider potential outcomes and future possibilities",
+//   }, {
+//     "quiz17": "When working on a project, do you tend to focus on the specific tasks at hand or the overall vision\r\n and goals?",
+//     a: "Specific tasks at hand",
+//     b: "Overall vision and goals",
+//   }, {
+//     "quiz18": "In a group discussion, do you prefer to stick to the facts and details or contribute ideas and\r\n theories?",
+//     a: "Stick to facts and details",
+//     b: "Contribute ideas and theories",
+//   }, {
+//     "quiz19": "How do you handle unexpected changes or disruptions to your plans?",
+//     a: "Prefer stability and may find changes challenging",
+//     b: "Adapt well to changes and enjoy the flexibility",
+//   }, {
+//     "quiz20": "When recalling a past event, do you focus more on the specific details and occurrences or the overall\r\n impressions and meanings?",
+//     a: "Specific details and occurrences",
+//     b: "Overall impressions and meanings",
+//   }, {
+//     "quiz21": "When reading a book or watching a movie, do you pay close attention to the plot and events or look\r\n for deeper meanings and symbolism?",
+//     a: "Plot and events",
+//     b: "Deeper meanings and symbolism",
+//   }, {
+//     "quiz22": "How do you prefer to receive information?",
+//     a: "Clear and straightforward explanations",
+//     b: "Rich with possibilities and potential connections",
+//   }, {
+//     "quiz23": "When faced with a decision, do you rely more on your past experiences and proven methods or seek out\r\n innovative and creative solutions?",
+//     a: "Past experiences and proven methods",
+//     b: "Innovative and creative solutions",
+//   }, {
+//     "quiz24": "In a brainstorming session, do you tend to come up with practical, actionable ideas or imaginative,\r\n out-of-the-box concepts?",
+//     a: "Practical, actionable ideas",
+//     b: "Imaginative, out-of-the-box concepts",
+//   }, {
+//     "quiz25": "How do you approach problem-solving?",
+//     a: "Step-by-step and methodical approach",
+//     b: "Approaching with creativity and openness",
+//   }, {
+//     "quiz26": "When making decisions, do you prioritize logical analysis and objective criteria or consider the\r\n impact on people and relationships?",
+//     a: "Logical analysis and objective criteria",
+//     b: "Consider the impact on people and relationships",
+//   }, {
+//     "quiz27": "How do you handle criticism or feedback?",
+//     a: "Focus on the facts and seek constructive solutions",
+//     b: "Consider the emotional aspects and how it affects relationships",
+//   }, {
+//     "quiz28": "When faced with a problem, do you rely more on your head and reason or your heart and\r\n empathy?",
+//     a: "Head and reason",
+//     b: "Heart and empathy",
+//   }, {
+//     "quiz29": "How do you prioritize tasks and responsibilities?",
+//     a: "Based on logical importance and efficiency",
+//     b: "Considering the values and impact on people",
+//   }, {
+//     "quiz30": "In a group decision-making process, do you tend to advocate for the most logical and rational choice\r\n or the one that aligns with personal values and harmony?",
+//     a: "Logical and rational choice",
+//     b: "Aligns with personal values and harmony",
+//   }, {
+//     "quiz31": "When giving feedback, do you focus on providing objective analysis or consider the individual's\r\n feelings and emotional response?",
+//     a: "Objective analysis",
+//     b: "Consider the individual's feelings and emotional response",
+//   }, {
+//     "quiz32": "How do you express your opinions in a debate or discussion?",
+//     a: "Emphasize facts, evidence, and logical reasoning",
+//     b: "Consider personal values, emotions, and the impact on people",
+//   }, {
+//     "quiz33": "When solving a problem, do you prioritize efficiency and effectiveness, even if it means being blunt,\r\n or do you consider the feelings of those involved?",
+//     a: "Prioritize efficiency and effectiveness",
+//     b: "Consider the feelings of those involved",
+//   }, {
+//     "quiz34": "In a work environment, do you value objective performance metrics and results or prioritize a\r\n positive and supportive team culture?",
+//     a: "Objective performance metrics and results",
+//     b: "Positive and supportive team culture",
+//   }, {
+//     "quiz35": "How do you approach conflict resolution?",
+//     a: "Focus on finding logical solutions and compromises",
+//     b: "Consider the emotional needs and harmony of individuals involved",
+//   }, {
+//     "quiz36": "When planning an event or project, do you prioritize the logical steps and timeline or consider the\r\n emotional atmosphere and team dynamics?",
+//     a: "Logical steps and timeline",
+//     b: "Emotional atmosphere and team dynamics",
+//   }, {
+//     "quiz37": "How do you cope with stress or pressure?",
+//     a: "Analyze the situation logically and strategize a plan",
+//     b: "Seek emotional support and consider the impact on relationships",
+//   }, {
+//     "quiz38": "When making decisions, what holds more weight for you?",
+//     a: "Objective data and analysis",
+//     b: "Personal values and the impact on people",
+//   }, {
+//     "quiz39": "When providing feedback, do you prioritize offering constructive criticism and improvement\r\n suggestions or highlighting positive aspects and encouraging the individual?",
+//     a: "Constructive criticism and improvement suggestions",
+//     b: "Highlighting positive aspects and encouraging the individual",
+//   }, {
+//     "quiz40": "How do you feel about making plans and sticking to a schedule?",
+//     a: "Enjoy making plans and prefer a structured schedule",
+//     b: "Prefer flexibility and spontaneity, dislike strict schedules",
+//   }, {
+//     "quiz41": "When starting a project, do you prefer to have a detailed plan in place or do you like to explore\r\n possibilities and figure it out as you go?",
+//     a: "Prefer to have a detailed plan",
+//     b: "Like to explore possibilities and figure it out as you go",
+//   }, {
+//     "quiz42": "How do you approach deadlines?",
+//     a: "Work diligently to meet deadlines well in advance",
+//     b: "Tend to work better under pressure and close to the deadline",
+//   }, {
+//     "quiz43": "In a work setting, do you prefer a clear and organized workspace or are you comfortable with a more\r\n flexible and adaptable environment?",
+//     a: "Prefer a clear and organized workspace",
+//     b: "Comfortable with a more flexible and adaptable environment",
+//   }, {
+//     "quiz44": "When packing for a trip, do you plan and make a checklist in advance or pack on the fly, throwing in\r\n what feels right at the moment?",
+//     a: "Plan and make a checklist in advance",
+//     b: "Pack on the fly, throwing in what feels right",
+//   }, {
+//     "quiz45": "What do you do when your plans suddenly change?",
+//     a: "Dislike unexpected changes and prefer to stick to the original plan",
+//     b: "Adapt well to unexpected changes and enjoy the flexibility",
+//   }, {
+//     "quiz46": "When faced with a new opportunity, do you prefer to consider the advantages and disadvantages prior\r\n to making a decision or go with the flow and see where it takes you ?",
+//     a: "Consider the advantages and disadvantages prior to deciding",
+//     b: "Go with the flow and see where it takes you",
+//   }, {
+//     "quiz47": "How do you approach work tasks?",
+//     a: "Like to have a set plan and follow it step by step",
+//     b: "Enjoy being flexible and adapting as the situation evolves",
+//   }, {
+//     "quiz48": "When organizing your day, do you prefer to have a to-do list with specific tasks and deadlines or\r\n keep it open-ended and see where the day takes you?",
+//     a: "To-do list with specific tasks and deadlines",
+//     b: "Keep it open-ended and see where the day takes you",
+//   }, {
+//     "quiz49": "How do you feel about routine and predictability?",
+//     a: "Prefer routine and find comfort in predictability",
+//     b: "Dislike routine and enjoy spontaneity",
+//   }, {
+//     "quiz50": "In a decision-making process, do you like to reach a conclusion and move on or prefer to keep options\r\n open and gather more information?",
+//     a: "Like to reach a conclusion and move on",
+//     b: "Prefer to keep options open and gather more information",
+//   }
+// ]
 
 
 // let FormSchema = z.object({});
@@ -720,6 +720,9 @@ let questions: QuestionsArray = [
 // }
 
 // console.log(FormSchema);
+
+
+
 type QuizFormFields = {
   mainQuestion: string;
   answers: string[];
@@ -818,6 +821,13 @@ export default function RadioGroupForm() {
   const [docs, setDocs] = React.useState<any>([])
   const [data, setData] = React.useState<any>([])
 
+  // let array = Array.from({length: 30}, (_, i) => ({[i+1]: `answer${i+1}`}));
+
+  // let obj = Object.assign({}, ...array);
+
+  // setData(obj);
+
+
   let FormSchema = z.object({});
 
 
@@ -836,10 +846,10 @@ export default function RadioGroupForm() {
     toast({
       title: "Thank you, for taking quiz.",
       description: (
-        <pre className="mt-2 max-h-[500px] w-[340px] overflow-y-auto overflow-x-hidden rounded-md bg-slate-950 p-4">
+        <div className="mt-2 max-h-[500px] w-[340px] !select-all overflow-y-auto overflow-x-hidden rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
           {/* The Reults will appear shortly. */}
-        </pre>
+        </div>
       ),
     })
     scrollNext();
@@ -891,17 +901,45 @@ export default function RadioGroupForm() {
         ...doc.data(),
       }))
       setDocs(newDocs)
-      // Configuring Data for Update:
-      // docs.map((item: any) => {
-      //   setInputedMainQuestion(item.mainQuestion)
-      //   setAnswersTag(item.answers)
-      //   setResultslTag(item.results)
-      // })
-      // setLastDoc(querySnapshot.docs[querySnapshot.docs.length - 1])
-      // setLoading(false)
     }
     fetchDocs()
   }, [])
+
+
+
+
+
+
+
+
+
+  // Create a frequency object
+  let frequency: any = {};
+
+  // Map through docs array
+  const results: any = docs.map((doc: any, index: any) => {
+    // Check what answers matches with index with docs and data array
+    const answerIndex = doc.answers.indexOf(data[index + 1]);
+    if (answerIndex !== -1) {
+      const result: any = doc.results[answerIndex];
+      // Increase the count in the frequency object
+      frequency[result] = (frequency[result] || 0) + 1;
+      return result;
+    }
+  });
+
+  // Convert the frequency object to an array and sort it by count
+  const sortedFrequency: any = Object.entries(frequency).sort((a: any, b: any) => b[1] - a[1]);
+
+  // Get the top 3 results
+  const topResults: any = sortedFrequency.slice(0, 3);
+
+
+
+
+
+
+
 
   return (
     <Carousel className="h-full w-screen" setApi={setApi}>
@@ -928,8 +966,6 @@ export default function RadioGroupForm() {
                             defaultValue={field.value}
                             className="flex flex-col space-y-1 px-2"
                           >
-
-
                             {question.answers?.map((a: any) => <FormItem key={a} className="flex items-center space-x-3 space-y-0">
                               <FormControl>
                                 <RadioGroupItem value={a} />
@@ -938,14 +974,6 @@ export default function RadioGroupForm() {
                                 {a}
                               </FormLabel>
                             </FormItem>)}
-
-
-                            {/* <FormItem className="flex items-center space-x-3 space-y-0">
-                              <FormControl>
-                                <RadioGroupItem value="b" />
-                              </FormControl>
-                              <FormLabel className="font-normal">{question.b}</FormLabel>
-                            </FormItem> */}
                           </RadioGroup>
                         </FormControl>
                         <FormMessage />
@@ -958,58 +986,9 @@ export default function RadioGroupForm() {
               <Button type="submit" className="mx-auto w-[50%]">Submit</Button>
             </form>
           </Form>
-          {/* <div className="mx-auto grid w-4/5  min-w-[300px] max-w-[550px] ">
-          <div className="grid min-w-full gap-2 text-left">
-            <h1 className="text-26xl font-bold">Forgot Your Password?</h1>
-            <h1 className="text-26xl font-bold">No problem.</h1>
-            <p className="text-balance text-muted-foreground">
-              Please enter your details
-            </p>
-          </div>
-          <div className="grid gap-4">
-            <div className="grid w-full gap-2">
-              <Label className="text-[#804DFE]" htmlFor="email">
-                Email
-              </Label>
-              <Input value={email} id="email" type="email" placeholder="ajju40959@gmail.com" required onChange={(e) => setEmail(e.target.value)} className="w-full rounded-md !border text-muted-foreground" />
-
-            </div>
-            <Button
-              type="submit"
-              className="w-full bg-[#804DFE] text-white hover:bg-secondary"
-              onClick={handleEmailDetail}
-            >
-              Confirm
-            </Button>
-          </div>
-        </div> */}
         </CarouselItem>
 
         <CarouselItem>
-          {/* <div className="mx-auto grid w-4/5 min-w-[300px] max-w-[550px] gap-5">
-            <h1 className="text-center text-26xl font-bold">Check you Inbox!</h1>
-            <div className="my-10 grid min-w-full gap-2 text-center">
-              <h1 className="flex flex-col items-center justify-center font-bold">
-                We’ve sent recover password link to
-                <span className="text-[#804DFE]">{email}</span>
-              </h1>
-              <p className="text-balance text-muted-foreground">
-                Check your email to recover the password
-              </p>
-            </div>
-            <div className="flex w-full items-center justify-center">
-              <Link href="/login">
-                <Button
-                  variant={"outline"}
-                  type="submit"
-                  className="mx-auto w-64"
-                >
-                  Login with new Password
-                </Button>
-              </Link>
-            </div>
-          </div> */}
-          {/* <QuizResult /> */}
           <Card className="mx-auto my-32 w-full max-w-md bg-[#804DFE] text-white">
             <CardHeader className="border-b border-white border-opacity-25 p-4">
               <div className="flex items-center space-x-2">
@@ -1018,26 +997,7 @@ export default function RadioGroupForm() {
               </div>
             </CardHeader>
             <CardContent className="p-4">
-
-              {/* {docs && docs.map((item: any) => item.results.map((result: any) => <div className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white" key={result}>{result}</div>))} */}
-              {/* {docs && docs.map((item: any) => item.results.map((result: any) => <div className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white" key={result}>{result}</div>))} */}
               {/* {
-                docs && docs.map((item: any) =>
-                  item.answers.map((answer: any, index: number) => {
-                    for (let key in data) {
-                      if (data[key] === answer) {
-                        let result = item.results[index];
-                        return (
-                          <div className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white" key={result}>
-                            {result}
-                          </div>
-                        );
-                      }
-                    }
-                  })
-                )
-              } */}
-              {
                 docs && docs.map((item: any) =>
                   item.answers.map((answer: any, index: number) => {
                     // Check if data is available and if the answer exists in the data
@@ -1056,9 +1016,24 @@ export default function RadioGroupForm() {
                     return null;
                   })
                 )
-              }
+              } */}
+
+              {/* {results.map((result:any, index:any) => (
+                <p key={index}>{result}</p>
+              ))} */}
+              {/* <h2>Top 3 Results</h2> */}
+              {topResults.map(([result, count]: [any, any], index: any) => (
+                // <p key={index}>
+                //   {index + 1}. {result} - {count}
+                // </p>
+                <div key={index} className="my-3 w-fit rounded-md bg-green-400 p-1.5 text-center text-xs text-white">
+                  {result} ({count})
+                </div>
 
 
+
+
+              ))}
 
               <p>Close types: intellectual and office.</p>
               <p>The opposite type is social.</p>
@@ -1084,11 +1059,15 @@ export default function RadioGroupForm() {
     results:["result1,"result2"]
   }
   ...]
-  Second Array => data=[
+  Second Object Array => data=[
     "1": "anwers1"
     "2": "anwers2"
   ]
   Now map through docs array and check what answers matches with index with docs and data array and return the content of the matched answers index of resutl index
+  There will 5 items means 0 to 4 items
+here are the results 1. Medical Researcher 2.Software Developer 3.Structural Engineer 4.Legal Advisor please do this inside of a already returned reaact component like inside a div element
+  now look among all of the data which are most in count.
+  Rank those and return top 3 and how many they count.
 
         <CarouselItem>
           <div className="mx-auto grid w-4/5 min-w-[300px] max-w-[550px] gap-5">
