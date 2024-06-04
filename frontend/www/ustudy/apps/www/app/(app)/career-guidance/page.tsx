@@ -846,10 +846,10 @@ export default function RadioGroupForm() {
     toast({
       title: "Thank you, for taking quiz.",
       description: (
-        <div className="mt-2 max-h-[500px] w-[340px] !select-all overflow-y-auto overflow-x-hidden rounded-md bg-slate-950 p-4">
+        <pre className="mt-2 max-h-[500px] w-[340px] !select-all overflow-y-auto overflow-x-hidden rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
           {/* The Reults will appear shortly. */}
-        </div>
+        </pre>
       ),
     })
     scrollNext();
@@ -942,13 +942,13 @@ export default function RadioGroupForm() {
 
 
   return (
-    <Carousel className="h-full w-screen" setApi={setApi}>
+    <Carousel setApi={setApi}>
       <CarouselContent>
         <CarouselItem>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="z-50 flex w-full flex-col items-center justify-center space-y-5 p-10">
-              <h1 className="title !m-0 bg-gradient-to-r from-rose-500 to-orange-500 bg-clip-text text-transparent">Career & Guidence</h1>
-              <div className="admin-panel-lists mx-auto w-[50%]">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="z-50 flex max-h-[65vh] w-full flex-col items-start justify-start space-y-5 overflow-y-auto overflow-x-hidden p-9 pt-3">
+              <h1 className="title mx-auto bg-gradient-to-r from-rose-500 to-orange-500 bg-clip-text text-transparent">Career & Guidence</h1>
+              <div className="admin-panel-lists mx-auto w-full">
                 {docs && docs.map((question: any, index: any) => (
                   <FormField
                     key={index}
@@ -983,13 +983,13 @@ export default function RadioGroupForm() {
                 ))}
               </div>
 
-              <Button type="submit" className="mx-auto w-[50%]">Submit</Button>
+              <Button type="submit" className="mx-auto w-[100%] py-6">Submit</Button>
             </form>
           </Form>
         </CarouselItem>
 
         <CarouselItem>
-          <Card className="mx-auto my-32 w-full max-w-md bg-[#804DFE] text-white">
+          <Card className="mx-auto my-24 w-full max-w-md bg-[#804DFE] text-white">
             <CardHeader className="border-b border-white border-opacity-25 p-4">
               <div className="flex items-center space-x-2">
                 <JapaneseYenIcon className="size-6" />
