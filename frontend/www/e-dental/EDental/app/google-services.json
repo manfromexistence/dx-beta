@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "207178393504",
+    "project_id": "e-dental-c4ed8",
+    "storage_bucket": "e-dental-c4ed8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207178393504:android:eb0da07231d5e3b7b0a6c5",
+        "android_client_info": {
+          "package_name": "com.dental.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvUMqHBjNUid-no7ttWhpPu7cPPvoGOrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

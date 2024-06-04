@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.EDental" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorOnPrimary">@color/blakish</item>
+        <item name="backgroundColor">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/primary</item>
+        <item name="colorSecondaryVariant">@color/primary</item>
+        <item name="colorOnSecondary">@color/blakish</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="Theme.EDental" parent="Base.Theme.EDental" />
+
+    <style name="WhiteCheckbox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/white</item>
+    </style>
+
+
+    <style name="semibold" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/montserrat_semibold</item>
+    </style>
+
+    <style name="medium" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="bold" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="bold_primary" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TabTextAppearance2" parent="TextAppearance.Design.Tab">
+        <item name="fontFamily">@font/montserrat_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+
+    <style name="MyRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+
+
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+<!--    <item-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/addDentist"-->
+<!--        android:icon="@drawable/add_dentist"-->
+<!--        android:title="Добавить стоматолога" />-->
+
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/exit"
+        android:icon="@drawable/exit_svgrepo_com"
+        android:title="Выход" />
+
+</menu>

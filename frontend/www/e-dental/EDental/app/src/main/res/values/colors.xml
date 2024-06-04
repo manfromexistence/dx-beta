@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#182766</color>
+    <color name="purple_700">#FF3700B3</color>
+
+
+    <color name="text_color_1">#FFFFFF</color>
+    <color name="text_color_2">#C7C7C7</color>
+    <color name="blakish">#343434</color>
+
+    <color name="off_white">#999999</color>
+    <color name="night_background">#414141</color>
+    <color name="night_ptimary">#525252</color>
+
+</resources>
