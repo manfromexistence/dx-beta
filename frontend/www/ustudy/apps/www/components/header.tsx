@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 // import {
@@ -124,44 +125,67 @@ import {
   SelectValue,
 } from "@/registry/default/ui/select"
 import { buttonVariants } from "@/registry/new-york/ui/button"
-// import { Button } from "@/registry/new-york/ui/button"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/registry/new-york/ui/sheet"
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  limit,
+  onSnapshot,
+  query,
+  startAfter,
+  updateDoc,
+} from "firebase/firestore"
+import { initializeApp } from "firebase/app"
+import { useToast } from "@/registry/default/ui/use-toast"
 
-export function SelectDemo() {
-  return (
-    <Select>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
-      </SelectTrigger>
-      <SelectContent side="left">
-        <SelectGroup>
-          <SelectLabel>Languages</SelectLabel>
-          <SelectItem value="apple">Bangla</SelectItem>
-          <SelectItem value="banana">English</SelectItem>
-          <SelectItem value="blueberry">Hindi</SelectItem>
-          <SelectItem value="grapes">French</SelectItem>
-          <SelectItem value="pineapple">Spain</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  )
+const firebaseConfig = {
+  apiKey: "AIzaSyAj8jpnqU9Xo1YXVFJh-wCdulweO5z--H8",
+  authDomain: "ustudy-96678.firebaseapp.com",
+  projectId: "ustudy-96678",
+  storageBucket: "ustudy-96678.appspot.com",
+  messagingSenderId: "581632635532",
+  appId: "1:581632635532:web:51ccda7d7adce6689a81a9",
 }
 
-const Header: NextPage = () => {
-  const onButtonsContainerClick = useCallback(() => {
-    // Please sync "Log In - Welcome" to the project
-  }, [])
+const app = initializeApp(firebaseConfig)
+const db: any = getFirestore(app)
+const auth = getAuth(app);
 
+
+
+
+const Header: NextPage = () => {
   const pathname = usePathname()
   const [open, setOpen] = React.useState(false)
   const { sessionId } = useAuth()
+  const { toast } = useToast()
+
+
+  const signOutUser = async () => {
+    try {
+      await signOut(auth);
+      toast({
+        title: "Signout successfull!!!",
+        description: `We are hoping to see you again.`,
+      })
+      // Sign-out successful.
+    } catch (error) {
+      // An error happened.
+    }
+  }
 
   return (
-    <section className=" !sticky !top-0 z-50 w-full !border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <header className="box-border flex h-[88px] max-w-full flex-1 flex-col items-start gap-[20px] px-0 py-5 text-left font-headings-desktop-poppins-16px-regular text-8xl text-blueviolet-200 lg:justify-start">
+    <section className=" bg-background/95 supports-[backdrop-filter]:bg-background/60 !sticky !top-0 z-50 w-full !border-b backdrop-blur">
+      <header className="font-headings-desktop-poppins-16px-regular text-blueviolet-200 box-border flex h-[88px] max-w-full flex-1 flex-col items-start gap-[20px] px-0 py-5 text-left text-8xl lg:justify-start">
         <div className="hidden h-12 w-[158px]" />
-        <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch px-20 py-0 mq750:box-border mq750:px-10">
+        <div className="mq750:box-border mq750:px-10 box-border flex max-w-full flex-row items-start justify-start self-stretch px-20 py-0">
           <div className="flex max-w-full flex-1 flex-row items-start justify-start gap-[24px]">
             <div className="box-border flex w-[143px] flex-col items-start justify-start">
               <Link href="/">
@@ -172,14 +196,14 @@ const Header: NextPage = () => {
               </Link>
             </div>
             <div className="flex flex-1 flex-col items-start justify-start px-0 pb-0 pt-1 lg:hidden">
-              <div className="relative h-10 w-px bg-neutrals-3" />
+              <div className="bg-neutrals-3 relative h-10 w-px" />
             </div>
             <nav className="m-0 box-border hidden max-w-full flex-1 flex-col items-start justify-start px-0 pb-0 pt-[13.5px] lg:flex">
-              <nav className="m-0 flex w-[468.9px] max-w-full flex-row items-start justify-between gap-[20px] text-left font-dm-sans text-base text-lightsteelblue-200">
+              <nav className="font-dm-sans text-lightsteelblue-200 m-0 flex w-[468.9px] max-w-full flex-row items-start justify-between gap-[20px] text-left text-base">
                 <Link
                   href="/about"
                   className={cn(
-                    "relative inline-block min-w-[46.9px] shrink-0 transition-colors hover:text-foreground/80",
+                    "hover:text-foreground/80 relative inline-block min-w-[46.9px] shrink-0 transition-colors",
                     pathname === "/about"
                       ? "text-[#804DFE]"
                       : "text-foreground/60"
@@ -190,7 +214,7 @@ const Header: NextPage = () => {
                 <Link
                   href="/calculator"
                   className={cn(
-                    "relative inline-block min-w-[76px] shrink-0 transition-colors hover:text-foreground/80",
+                    "hover:text-foreground/80 relative inline-block min-w-[76px] shrink-0 transition-colors",
                     pathname === "/calculator"
                       ? "text-[#804DFE]"
                       : "text-foreground/60"
@@ -201,7 +225,7 @@ const Header: NextPage = () => {
                 <Link
                   href="/colleges"
                   className={cn(
-                    "relative inline-block min-w-[76px] shrink-0 transition-colors hover:text-foreground/80",
+                    "hover:text-foreground/80 relative inline-block min-w-[76px] shrink-0 transition-colors",
                     pathname === "/colleges"
                       ? "text-[#804DFE]"
                       : "text-foreground/60"
@@ -212,7 +236,7 @@ const Header: NextPage = () => {
                 <Link
                   href="/specialty"
                   className={cn(
-                    "rrelative inline-block min-w-[63px] shrink-0 transition-colors hover:text-foreground/80",
+                    "rrelative hover:text-foreground/80 inline-block min-w-[63px] shrink-0 transition-colors",
                     pathname === "/specialty"
                       ? "text-[#804DFE]"
                       : "text-foreground/60"
@@ -223,7 +247,7 @@ const Header: NextPage = () => {
                 <Link
                   href="/career-guidance"
                   className={cn(
-                    "relative inline-block min-w-[124px] shrink-0 whitespace-nowrap transition-colors hover:text-foreground/80",
+                    "hover:text-foreground/80 relative inline-block min-w-[124px] shrink-0 whitespace-nowrap transition-colors",
                     pathname === "/career-guidance"
                       ? "text-[#804DFE]"
                       : "text-foreground/60"
@@ -234,7 +258,7 @@ const Header: NextPage = () => {
                 <Link
                   href="/support"
                   className={cn(
-                    "relative inline-block min-w-[31px] shrink-0 transition-colors hover:text-foreground/80",
+                    "hover:text-foreground/80 relative inline-block min-w-[31px] shrink-0 transition-colors",
                     pathname === "/support"
                       ? "text-[#804DFE]"
                       : "text-foreground/60"
@@ -245,7 +269,7 @@ const Header: NextPage = () => {
                 <Link
                   href="/faq"
                   className={cn(
-                    "relative inline-block min-w-[31px] shrink-0 transition-colors hover:text-foreground/80",
+                    "hover:text-foreground/80 relative inline-block min-w-[31px] shrink-0 transition-colors",
                     pathname === "/faq"
                       ? "text-[#804DFE]"
                       : "text-foreground/60"
@@ -256,7 +280,7 @@ const Header: NextPage = () => {
 
               </nav>
             </nav>
-            <div className="mt-2 flex flex-row items-center justify-center text-center font-dm-sans text-base text-shade-white gap-2">
+            <div className="font-dm-sans text-shade-white mt-2 flex flex-row items-center justify-center gap-2 text-center text-base">
               <Select>
                 <SelectTrigger className="w-[80px] rounded-md">
                   <SelectValue placeholder="EN" />
@@ -314,7 +338,7 @@ const Header: NextPage = () => {
                   <Link className="w-full  border-b p-5" href="/colleges">
                     <div className="flex flex-col items-start justify-start space-y-1 ">
                       <span className="text-md text-primary">About</span>
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         Discover why we creted this platfrom.
                       </span>
                     </div>
@@ -322,7 +346,7 @@ const Header: NextPage = () => {
                   <Link className="w-full  border-b p-5" href="/colleges">
                     <div className="flex flex-col items-start justify-start space-y-1 ">
                       <span className="text-md text-primary">Colleges</span>
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         View Colleage that fits your need.
                       </span>
                     </div>
@@ -330,7 +354,7 @@ const Header: NextPage = () => {
                   <Link className="w-full  border-b p-5" href="/colleges">
                     <div className="flex flex-col items-start justify-start space-y-1 ">
                       <span className="text-md text-primary">Calculator</span>
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         Calculate your gols.
                       </span>
                     </div>
@@ -340,7 +364,7 @@ const Header: NextPage = () => {
                       <span className="text-md text-primary">
                         Career Guidence
                       </span>
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         Seach for cereers that you love.
                       </span>
                     </div>
@@ -348,7 +372,7 @@ const Header: NextPage = () => {
                   <Link className="w-full  border-b p-5" href="/colleges">
                     <div className="flex flex-col items-start justify-start space-y-1 ">
                       <span className="text-md text-primary">Specialty</span>
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         Get advice form specialiest.
                       </span>
                     </div>
@@ -356,7 +380,7 @@ const Header: NextPage = () => {
                   <Link className="w-full  border-b p-5" href="/colleges">
                     <div className="flex flex-col items-start justify-start space-y-1 ">
                       <span className="text-md text-primary">FAQ</span>
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         Ask question about this platfrom.
                       </span>
                     </div>
@@ -369,7 +393,7 @@ const Header: NextPage = () => {
                           Contact email:
                         </div>
                       </div>
-                      <b className="relative inline-block min-w-[117px] whitespace-nowrap font-dm-sans text-mediumpurple">
+                      <b className="font-dm-sans text-mediumpurple relative inline-block min-w-[117px] whitespace-nowrap">
                         info@ustudy.io
                       </b>
                     </div>
@@ -426,26 +450,19 @@ const Header: NextPage = () => {
 
               <div
                 className="hidden cursor-pointer flex-row items-start justify-start lg:flex"
-                onClick={onButtonsContainerClick}
               >
                 {!sessionId ? (
                   <>
-                    {/* <div className="flex flex-row items-center justify-center whitespace-nowrap rounded bg-blueviolet-200 px-[23px] py-4">
-                      <Link
-                        href="/signup"
-                        className={cn(
-                          "relative inline-block min-w-[112px] leading-[16px]"
-                        )}
-                      >
-                        Sign Up/Log In
-                      </Link>
-                    </div> */}
-
-                    <Link href="/signup">
-                      <Button className="bg-blueviolet-200" variant="outline">
-                        Sign Up/Log In
-                      </Button>
-                    </Link>
+                    {
+                      auth.currentUser ? (<Button onClick={signOutUser} className="bg-blueviolet-200" variant="outline">
+                        Signout
+                      </Button>) :
+                        (<Link href="/login">
+                          <Button className="bg-blueviolet-200" variant="outline">
+                            Sign Up/Log In
+                          </Button>
+                        </Link>)
+                    }
                   </>
                 ) : (
                   <div className="flex items-center gap-2">
@@ -475,7 +492,7 @@ const Header: NextPage = () => {
                           <Bell className="size-4" />
                         </div>
                       </PopoverTrigger>
-                      <PopoverContent className="w-[425px] max-h-[500px] mr-20 !p-5">
+                      <PopoverContent className="mr-20 max-h-[500px] w-[425px] !p-5">
                         {/* <CardsReportIssue />
                     <CardsCookieSettings /> */}
                         {/* <Notifications /> */}
@@ -545,7 +562,7 @@ const Header: NextPage = () => {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    className="gap-1 text-sm p-3"
+                                    className="gap-1 p-3 text-sm"
                                   >
                                     <Settings className="size-4" />
                                     <span className="sr-only sm:not-sr-only">
@@ -571,33 +588,33 @@ const Header: NextPage = () => {
                               </DropdownMenu>
                             </div>
                           </div>
-                          {/* 
+                          {/*
                           <TabsContent value="all" className="!border-none !p-0 !w-full flex items-center justify-center ">
                             <div className="bg-secondary flex items-center justify-center p-10 rounded-full">
                               <Inbox />
                             </div>
                             <span>Nothing to show at All</span>
                           </TabsContent> */}
-                          <TabsContent value="all" className="!border-none !p-0 !w-full flex items-center justify-center flex-col gap-3">
-                            <div className="w-full h-[400px] flex items-center justify-center flex-col gap-3">
-                              <div className="bg-secondary flex items-center justify-center h-24 w-24 rounded-full ">
+                          <TabsContent value="all" className="flex !w-full flex-col items-center justify-center gap-3 !border-none !p-0">
+                            <div className="flex h-[400px] w-full flex-col items-center justify-center gap-3">
+                              <div className="bg-secondary flex size-24 items-center justify-center rounded-full ">
                                 <Inbox />
                               </div>
                               <span>Nothing to show at All</span>
                             </div>
 
                           </TabsContent>
-                          <TabsContent value="archive" className="!border-none !p-0 !w-full flex items-center justify-center flex-col gap-3">
-                            <div className="w-full h-[400px] flex items-center justify-center flex-col gap-3">
-                              <div className="bg-secondary flex items-center justify-center h-24 w-24 rounded-full ">
+                          <TabsContent value="archive" className="flex !w-full flex-col items-center justify-center gap-3 !border-none !p-0">
+                            <div className="flex h-[400px] w-full flex-col items-center justify-center gap-3">
+                              <div className="bg-secondary flex size-24 items-center justify-center rounded-full ">
                                 <Inbox />
                               </div>
                               <span>Nothing to show at Archive</span>
                             </div>
                           </TabsContent>
-                          <TabsContent value="comments" className="!border-none !p-0 !w-full flex items-center justify-center flex-col gap-3">
-                            <div className="w-full h-[400px] flex items-center justify-center flex-col gap-3">
-                              <div className="bg-secondary flex items-center justify-center h-24 w-24 rounded-full ">
+                          <TabsContent value="comments" className="flex !w-full flex-col items-center justify-center gap-3 !border-none !p-0">
+                            <div className="flex h-[400px] w-full flex-col items-center justify-center gap-3">
+                              <div className="bg-secondary flex size-24 items-center justify-center rounded-full ">
                                 <Inbox />
                               </div>
                               <span>Nothing to show at Comments</span>

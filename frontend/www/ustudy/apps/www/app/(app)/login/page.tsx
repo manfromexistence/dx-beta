@@ -15,7 +15,7 @@ import { Checkbox } from "@/registry/default/ui/checkbox"
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
 import { UserAuthForm } from "../examples/authentication/components/user-auth-form"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useAuth } from "@clerk/nextjs";
@@ -68,7 +68,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "blur fixed inset-0 z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 blur",
       className
     )}
     {...props}
@@ -85,13 +85,13 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg duration-200 sm:rounded-lg",
         className
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+      <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none">
         <X className="size-4" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
@@ -149,7 +149,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-muted-foreground text-sm", className)}
     {...props}
   />
 ))
@@ -186,6 +186,19 @@ const Login: NextPage = () => {
   const [region, setRegion] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [docs, setDocs] = useState<any>([]);
+  useEffect(() => {
+    const fetchDocs = async () => {
+      const q = query(collection(db, "users"));
+      const querySnapshot = await getDocs(q);
+      const newDocs = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setDocs(newDocs);
+    };
+    fetchDocs();
+  }, []);
 
   const EnhancedErrors = (input: any): string | null => {
     switch (input) {
@@ -216,60 +229,60 @@ const Login: NextPage = () => {
       default: return "Try again later or contact support.";
     }
   };
-  const handleSignUp = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    confirmPassword === password ?
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed up 
-          const user = userCredential.user;
-          setUserid(user)
-          console.log("Signup");
-          setUserDetailsDialog(true)
+  // const handleSignUp = async (event: { preventDefault: () => void }) => {
+  //   event.preventDefault();
+  //   confirmPassword === password ?
+  //     createUserWithEmailAndPassword(auth, email, password)
+  //       .then((userCredential) => {
+  //         // Signed up
+  //         const user = userCredential.user;
+  //         setUserid(user)
+  //         console.log("Signup");
+  //         setUserDetailsDialog(true)
 
-        })
-        .catch((error) => {
-          setUserDetailsDialog(false)
+  //       })
+  //       .catch((error) => {
+  //         setUserDetailsDialog(false)
 
-          setUserid("Error");
-          console.log("Error");
+  //         setUserid("Error");
+  //         console.log("Error");
 
-          toast({
-            title: "Uh oh! Something went wrong with your SignUp.",
-            description: (<div className='flex items-start justify-start bg-primary-foreground rounded-md text-xs flex-col space-y-1.5 p-3 mt-1'>
-              <span className="text-muted-foreground">{`Error: ${EnhancedErrors(error.code)}`}</span>
-              <span className="text-muted-foreground">{`Possible Solution: ${SuggestSolutions(error.code)}`}</span>
-            </div>),
-          })
-        }) : toast({
-          title: "Password and Confirm Password donot match!",
-          description: `Please match them Password${password} & Confirm Passwrod:${confirmPassword}`,
-        })
+  //         toast({
+  //           title: "Uh oh! Something went wrong with your SignUp.",
+  //           description: (<div className='bg-primary-foreground mt-1 flex flex-col items-start justify-start space-y-1.5 rounded-md p-3 text-xs'>
+  //             <span className="text-muted-foreground">{`Error: ${EnhancedErrors(error.code)}`}</span>
+  //             <span className="text-muted-foreground">{`Possible Solution: ${SuggestSolutions(error.code)}`}</span>
+  //           </div>),
+  //         })
+  //       }) : toast({
+  //         title: "Password and Confirm Password donot match!",
+  //         description: `Please match them Password${password} & Confirm Passwrod:${confirmPassword}`,
+  //       })
 
-  };
-  const userDetails = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    const Create = await addDoc(collection(db, "users"), {
-      accountType: "Client",
-      email: email,
-      name: name,
-      userName: userName,
-      region: region,
-      surname: surname,
-      untScore: untScore,
-      userId: userId.uid
-    });
+  // };
+  // const userDetails = async (event: { preventDefault: () => void }) => {
+  //   event.preventDefault();
+  //   const Create = await addDoc(collection(db, "users"), {
+  //     accountType: "Client",
+  //     email: email,
+  //     name: name,
+  //     userName: userName,
+  //     region: region,
+  //     surname: surname,
+  //     untScore: untScore,
+  //     userId: userId.uid
+  //   });
 
-    console.log("Document written with ID: ", Create.id);
+  //   console.log("Document written with ID: ", Create.id);
 
-    toast({
-      title: "User signed up successfully!",
-      description: `Continue Using Ustudy ${userId.uid}`,
-    })
-    setUserDetailsDialog(false);
-    router.push('/login')
+  //   toast({
+  //     title: "User signed up successfully!",
+  //     description: `Continue Using Ustudy ${userId.uid}`,
+  //   })
+  //   setUserDetailsDialog(false);
+  //   router.push('/login')
 
-  };
+  // };
 
 
 
@@ -277,18 +290,35 @@ const Login: NextPage = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
+        // Signed in
         const user = userCredential.user;
-        toast({
-          title: "User signed in successfully!",
-          description: `Continue Using Ustudy ${user.uid}`,
+        docs.map((users: any) => {
+          // if (users.acccountType === "Client") {
+          //   user.uid === users.userId && toast({
+          //     title: "This is a user account!",
+          //     description: `Please be carefull to the database. Any suspicius activity will lead to Account Ban.Signed User ${users.name}`,
+          //   })
+          // }
+          user.uid === users.userId && toast({
+            title: "User signed in successfully!",
+            description: `Continue Using Ustudy ${users.userName}`,
+          })
+          // if (users.accountType === "Admin") {
+          //   user.uid === users.userId && toast({
+          //     title: "Admin signed in successfully!",
+          //     description: `Continue Using Ustudy ${users.name}`,
+          //   })
+          //   router.push('/universities')
+          // }
+
         })
+
         router.push('/calculator')
       })
       .catch((error) => {
         toast({
           title: "Uh oh! Something went wrong with your SignIn.",
-          description: (<div className='flex items-start justify-start bg-primary-foreground rounded-md text-xs flex-col space-y-1.5 p-3 mt-1'>
+          description: (<div className='bg-primary-foreground mt-1 flex flex-col items-start justify-start space-y-1.5 rounded-md p-3 text-xs'>
             <span className="text-muted-foreground">{`Error: ${EnhancedErrors(error.code)}`}</span>
             <span className="text-muted-foreground">{`Possible Solution: ${SuggestSolutions(error.code)}`}</span>
           </div>),
@@ -324,7 +354,7 @@ const Login: NextPage = () => {
         <div className="mx-auto grid w-4/5 min-w-[300px] max-w-[550px] gap-5">
           <div className="grid min-w-full gap-2 text-left">
             <h1 className="text-37xl font-bold">Welcome back!</h1>
-            <p className="text-balance text-muted-foreground">
+            <p className="text-muted-foreground text-balance">
               Please enter your details
             </p>
           </div>
@@ -333,7 +363,7 @@ const Login: NextPage = () => {
               <Label className="text-[#804DFE]" htmlFor="email">
                 Email or Username
               </Label>
-              <Input value={email} id="email" type="email" placeholder="ajju40959@gmail.com" required onChange={(e) => setEmail(e.target.value)} className="w-full rounded-md !border text-muted-foreground" />
+              <Input value={email} id="email" type="email" placeholder="ajju40959@gmail.com" required onChange={(e) => setEmail(e.target.value)} className="text-muted-foreground w-full rounded-md !border" />
 
             </div>
             <div className="grid gap-2">
@@ -342,7 +372,7 @@ const Login: NextPage = () => {
                   Password
                 </Label>
               </div>
-              <div className="w-full relative">
+              <div className="relative w-full">
                 <Input
                   required
                   value={password}
@@ -350,7 +380,7 @@ const Login: NextPage = () => {
                   id="password"
                   placeholder="YourPassword123"
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-md !border text-muted-foreground"
+                  className="text-muted-foreground w-full rounded-md !border"
                 />
                 <div
                   onClick={togglePasswordVisibility}
@@ -372,7 +402,7 @@ const Login: NextPage = () => {
             </Link>
             <Button
               onClick={handleSignIn}
-              className="w-full bg-[#804DFE] text-white hover:bg-secondary"
+              className="hover:bg-secondary w-full bg-[#804DFE] text-white"
             >
               Login
             </Button>
@@ -380,7 +410,7 @@ const Login: NextPage = () => {
           <div className="mt-4 min-w-full space-x-1 text-center text-sm">
             <span>Don't have an account?</span>
             <Link
-              href="login"
+              href="signup"
               className="bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text font-bold text-transparent"
             >
               Signup

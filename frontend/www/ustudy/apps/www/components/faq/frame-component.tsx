@@ -1430,7 +1430,7 @@ const FrameComponent: NextPage = () => {
         <Accordion
           type="single"
           collapsible
-          className="mx-auto w-[90%] space-y-5 lg:w-[700px]"
+          className="mx-auto w-[90%] lg:w-[700px]"
         >
           {/* {docs.map((items) => (
             <AccordionItem key={items.id} value={items.id}>

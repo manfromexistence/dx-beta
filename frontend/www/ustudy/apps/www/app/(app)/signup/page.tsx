@@ -220,16 +220,16 @@ const Signup: NextPage = () => {
     }
   };
   const handleSignUp = async (event: { preventDefault: () => void }) => {
-    event.preventDefault(); 
+    event.preventDefault();
     confirmPassword === password ?
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up 
+        // Signed up
         const user = userCredential.user;
         setUserid(user)
         console.log("Signup");
         setUserDetailsDialog(true)
-        
+
       })
       .catch((error) => {
         setUserDetailsDialog(false)
@@ -251,7 +251,7 @@ const Signup: NextPage = () => {
 
   };
   const userDetails = async (event: { preventDefault: () => void }) => {
-    event.preventDefault(); 
+    event.preventDefault();
     const Create = await addDoc(collection(db, "users"), {
       accountType: "Client",
       email: email,
@@ -267,7 +267,7 @@ const Signup: NextPage = () => {
 
     toast({
       title: "User signed up successfully!",
-      description: `Continue Using Ustudy ${userId.uid}`,
+      description: `Continue Using Ustudy ${userName}`,
     })
     setUserDetailsDialog(false);
     router.push('/login')
@@ -279,7 +279,7 @@ const Signup: NextPage = () => {
   const handleSignIn = async () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
+        // Signed in
         const user = userCredential.user;
         toast({
           title: "User signed in successfully!",
@@ -460,7 +460,7 @@ const Signup: NextPage = () => {
               href="login"
               className="bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text font-bold text-transparent"
             >
-              Signin
+              Login
             </Link>
           </div>
         </div>
