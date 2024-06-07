@@ -794,7 +794,7 @@ const Specialty = () => {
                                             View
                                         </Button>
                                     </DialogTrigger>
-                                    <DialogContent className="w-[55%] min-w-[300px] max-w-[750px]">
+                                    <DialogContent className="w-[55%] lg:w-[1600px] min-w-max max-w-[99%]">
                                         <div className="w-full flex flex-col gap-2 items-center justify-center p-3 text-sm">
                                             <div className="flex w-max min-w-full flex-col gap-2 rounded-lg border p-3 text-sm">
                                                 <div className="flex gap-2">
@@ -817,7 +817,7 @@ const Specialty = () => {
                                                     </span>
                                                 </div>
                                                 <Separator />
-                                                <div className="flex gap-2">
+                                                <div className="flex gap-2 max-w-[90%] overflow-x-auto overflow-y-hidden truncate">
                                                     <p>Universities: </p>
                                                     <span className="font-semibold w-full overflow-y-hidden overflow-x-auto truncate space-x-1">
                                                         {
@@ -936,8 +936,6 @@ const Specialty = () => {
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </DialogContent>
                                 </Dialog>
 

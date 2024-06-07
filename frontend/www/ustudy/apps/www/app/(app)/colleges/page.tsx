@@ -48,7 +48,7 @@ const SpecialtyPage: NextPage = () => {
   useEffect(() => {
     const fetchDocs = async () => {
       setLoading(true)
-      const q = query(collection(db, "universities"), limit(8))
+      const q = query(collection(db, "universities"))
       const querySnapshot = await getDocs(q)
       const newDocs = querySnapshot.docs.map((doc) => ({
         id: doc.id,

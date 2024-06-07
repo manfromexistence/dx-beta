@@ -719,7 +719,7 @@ const Question = () => {
                 <CardFooter className="flex flex-col justify-start items-start gap-2">
 
 
-                  {
+                  {/* {
                     items.results.length > 0 ? (<div className="flex items-center gap-2 w-full">
                       {
                         items.results.map((index: any) => {
@@ -731,7 +731,8 @@ const Question = () => {
                     </div>) : (<div className="flex items-center gap-2 w-full">
                       <Badge variant="outline">Nothing</Badge>
                     </div>)
-                  }
+                  } */}
+
                   <div className="flex gap-2 w-full justify-between mt-3">
                     <Dialog>
                       <DialogTrigger asChild>
@@ -762,7 +763,7 @@ const Question = () => {
                           <Separator />
                           <div className="flex gap-2 p-3">
                             <p>Results: </p>
-                            <span className="font-semibold w-full overflow-y-hidden overflow-x-auto  truncate">
+                            <span className="font-semibold w-full overflow-y-hidden overflow-x-auto truncate">
                               {items.results.length > 0 ? items.results.flatMap((item:any) => <Badge
                                 key={item}
                                 className={cn(
